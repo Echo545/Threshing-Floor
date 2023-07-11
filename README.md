@@ -19,7 +19,7 @@ Here's a simply way to test the confidentiality of your outputs:
 2. Now modify the contents of `KEY.txt` to anything other than it was originally.
 3. Run `winnow.py` using either `wheat.txt` or `chaffed.txt` as the input file. If the key used to winnow is different than the key used to generate the "wheat", then the entire input will be considered "chaff" and no message will be printed.
 
-### Analyze.py
+### analyze.py
 
 `analyze.py` will read the message field of each line in the given file (which is a single bit) and attempt to reconstruct the original message. It will also try constructing messages using only the first occurrences and last occurrences of a each message (noted using the message serial number)
 * Running `python analyze.py wheat.txt` will result in getting the original message back as there is no chaff.

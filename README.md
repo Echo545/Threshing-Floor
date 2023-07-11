@@ -24,3 +24,10 @@ Here's a simply way to test the confidentiality of your outputs:
 `analyze.py` will read the message field of each line in the given file (which is a single bit) and attempt to reconstruct the original message. It will also try constructing messages using only the first occurrences and last occurrences of a each message (noted using the message serial number)
 * Running `python analyze.py wheat.txt` will result in getting the original message back as there is no chaff.
 * Running `python analyze.py chaffed.txt` will result in a nonsense output as it is impossible to distinguish the "chaff" from the "wheat."
+
+## Next Steps
+
+- [x] Add a simple analysis program to verify results.
+- [ ] Restructure output to use blocks of bits per message instead of a single bit per message.
+- [ ] Build an advanced analysis program that tries multiple approaches to guess the original message.
+- [ ] Build a simple chat client using chaffing and winnowing.

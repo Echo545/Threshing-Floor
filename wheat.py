@@ -1,6 +1,11 @@
+import sys
 from hashlib import sha256
 
-MESSAGE = "Hello"
+if len(sys.argv) != 2:
+    print("Usage: wheat.py <message>")
+    sys.exit(1)
+
+MESSAGE = sys.argv[1]
 OUTPUT_FILE = "wheat.txt"
 AUTH_KEY_FILE = "KEY.txt"
 

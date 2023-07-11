@@ -9,12 +9,12 @@ def read_key(filename):
 def main():
 
     # check arguments
-    if len(sys.argv) != 3:
-        print("Usage: winnow.py <input_file> <key_file>")
-        return 1
+    if len(sys.argv) != 2:
+        print("Usage: winnow.py <input_file>")
+        sys.exit(1)
 
     INPUT_FILE = sys.argv[1]
-    KEY_FILE = sys.argv[2]
+    KEY_FILE = "KEY.txt"
     bits = []
 
     KEY = read_key(KEY_FILE)

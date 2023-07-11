@@ -36,7 +36,6 @@ def main():
             CHAFF_FIRST = random.choice([True, False])
 
             if int(serial, 16) != 0:
-                print(serial)
                 f.write("\n")
 
             if CHAFF_FIRST:

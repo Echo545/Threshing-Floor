@@ -4,12 +4,10 @@ MESSAGE = "Hello"
 OUTPUT_FILE = "wheat.txt"
 AUTH_KEY_FILE = "KEY.txt"
 
-
 def read_key(filename):
     with open(filename, "r") as f:
         key = f.read()
     return key
-
 
 def main():
     # Read the key from the file

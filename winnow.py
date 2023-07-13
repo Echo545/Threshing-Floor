@@ -25,16 +25,23 @@ def main():
 
     for line in lines:
         line = line.strip()
-        serial, bit, mac = line.split(",")
 
-        # Convert serial to int
-        serial = int(serial, 16)
+        if len(line) > 0:
 
-        mac_components = str(serial) + str(bit) + str(KEY)
-        check_mac = sha256(mac_components.encode('utf-8')).hexdigest()
+            try:
+                serial, bit, mac = line.split(",")
+            except:
+                print("Malformed file format. Expected format: <serial>,<bit>,<mac>")
+                sys.exit(1)
 
-        if check_mac == mac:
-            bits.append(bit)
+            # Convert serial to int
+            serial = int(serial, 16)
+
+            mac_components = str(serial) + str(bit) + str(KEY)
+            check_mac = sha256(mac_components.encode('utf-8')).hexdigest()
+
+            if check_mac == mac:
+                bits.append(bit)
 
     # Convert bits to chars
     chars = []

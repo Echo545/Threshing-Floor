@@ -30,20 +30,28 @@ def main():
     for line in lines:
 
         line = line.strip()
-        serial, bit, mac = line.split(",")
-        serial = int(serial, 16)
 
-        # Add bit to all_bits
-        all_bits.append(bit)
+        if len(line) > 0:
 
-        # Add bit to last_bits if serial has been seen before
-        if serial in seen_serials:
-            last_seen_bits.append(bit)
+            try:
+                serial, bit, mac = line.split(",")
+            except:
+                print("Malformed file format. Expected format: <serial>,<bit>,<mac>")
+                sys.exit(1)
 
-        # Add bit to first_bits if serial has not been seen before
-        if serial not in seen_serials:
-            first_seen_bits.append(bit)
-            seen_serials.append(serial)
+            serial = int(serial, 16)
+
+            # Add bit to all_bits
+            all_bits.append(bit)
+
+            # Add bit to last_bits if serial has been seen before
+            if serial in seen_serials:
+                last_seen_bits.append(bit)
+
+            # Add bit to first_bits if serial has not been seen before
+            if serial not in seen_serials:
+                first_seen_bits.append(bit)
+                seen_serials.append(serial)
 
     # Convert bits to chars
     all_chars = bitsToChars(all_bits)

@@ -8,11 +8,17 @@ if len(sys.argv) != 2:
 
 INPUT_FILE = sys.argv[1]
 
-def bitsToChars(bits):
+# Converts a list of bits to a string of chars, replacing non-printable chars with 0x7F
+def bitsToString(bits):
     chars = []
     for i in range(0, len(bits), 8):
         char_bits = bits[i:i+8]
         char = chr(int("".join(char_bits), 2))
+
+        # If char is not printable, replace with 0x7F
+        if not char.isprintable():
+            char = chr(0x7F)
+
         chars.append(char)
     return "".join(chars)
 
@@ -54,9 +60,9 @@ def main():
                 seen_serials.append(serial)
 
     # Convert bits to chars
-    all_chars = bitsToChars(all_bits)
-    first_chars = bitsToChars(first_seen_bits)
-    last_chars = bitsToChars(last_seen_bits)
+    all_chars = bitsToString(all_bits)
+    first_chars = bitsToString(first_seen_bits)
+    last_chars = bitsToString(last_seen_bits)
 
     print("---STATS---")
 

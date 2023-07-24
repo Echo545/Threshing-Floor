@@ -6,7 +6,7 @@ if len(sys.argv) != 2:
     sys.exit(1)
 
 MESSAGE = sys.argv[1]
-OUTPUT_FILE = "wheat.txt"
+OUTPUT_FILE = "out/wheat.txt"
 AUTH_KEY_FILE = "KEY.txt"
 
 def read_key(filename):

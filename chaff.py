@@ -2,8 +2,8 @@ import random
 import string
 from hashlib import sha256
 
-WHEAT_FILE = "wheat.txt"
-OUTPUT_FILE = "chaffed.txt"
+WHEAT_FILE = "out/wheat.txt"
+OUTPUT_FILE = "out/chaffed.txt"
 
 def randomKey():
     key = ""

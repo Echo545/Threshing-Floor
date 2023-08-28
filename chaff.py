@@ -1,6 +1,6 @@
 import random
 import string
-from hashlib import sha256
+import hmac
 
 WHEAT_FILE = "out/wheat.txt"
 OUTPUT_FILE = "out/chaffed.txt"
@@ -25,10 +25,10 @@ def main():
             chaff_bit = str(int(bit) ^ 1)
 
             # generate a random key 64 chars
-            key = randomKey()
+            key = randomKey().encode()
 
-            mac_components = str(serial) + str(chaff_bit) + str(key)
-            mac = sha256(mac_components.encode('utf-8')).hexdigest()
+            mac_components = str(serial) + str(chaff_bit)
+            mac = hmac.new(key, mac_components.encode(), "sha256").hexdigest()
 
             chaff_line = ",".join([str(serial), str(chaff_bit), mac])
 

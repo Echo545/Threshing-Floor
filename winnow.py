@@ -1,5 +1,5 @@
 import sys
-from hashlib import sha256
+import hmac
 
 # Reads key file
 def readKey(filename):
@@ -42,10 +42,10 @@ def possibleResults(bits):
 
 # Returns true if message hash is expected
 def authenticMessage(serial, bit, mac, key):
-    hash_components = str(serial) + str(bit) + str(key)
-    hash = sha256(hash_components.encode('utf-8')).hexdigest()
+    hash_components = str(serial) + str(bit)
+    hash = hmac.new(key, hash_components.encode(), "sha256").hexdigest()
 
-    return hash == mac
+    return hmac.compare_digest(hash, mac)
 
 # Returns the highest serial numbers in a list of lines
 def maxValidSerial(lines, key):
@@ -88,7 +88,7 @@ def main():
 
     INPUT_FILE = sys.argv[1]
     KEY_FILE = "KEY.txt"
-    KEY = readKey(KEY_FILE)
+    KEY = readKey(KEY_FILE).encode()
 
     # Read input file into list of lines
     with open(INPUT_FILE, "r") as f:

@@ -35,6 +35,7 @@ To simulate messages arriving out of order, you can run `python shuffler.py <inp
 - [x] Guess missing bits while winnowing
 - [x] Handle shuffled inputs
 - [x] Update analyze.py to handle shuffled input
+- [x] Use more efficient MAC algorithm
 - [ ] Update analyze.py to attempt to guess missing bits
 - [ ] Restructure output to use blocks of bits per message instead of a single bit per message.
 - [ ] Build an advanced analysis program that tries multiple approaches to guess the original message.
